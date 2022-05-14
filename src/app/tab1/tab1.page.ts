@@ -13,7 +13,6 @@ export class Tab1Page {
   constructor(public deseosService: DeseosService, private router: Router, private alertCtrl: AlertController) {}
 
   async agregar() {
-   // this.router.navigateByUrl("/tabs/tab1/agregar");   
    const alert =  await this.alertCtrl.create({
       header: 'Nueva lista',
       inputs: [{
@@ -35,9 +34,10 @@ export class Tab1Page {
             if (data.titulo.length === 0) {
               return;
             }
-
-            //Crear la lista
-            this.deseosService.crearLista(data.titulo);
+              //Crear la lista
+              const listaId = this.deseosService.crearLista(data.titulo);
+              // Hacemos una redireccion
+              this.router.navigateByUrl(`/tabs/tab1/agregar/${listaId}`);   
 
           }
         }
@@ -45,6 +45,10 @@ export class Tab1Page {
    });
    alert.present();
 
+  }
+
+  detalle(listaId:string | number){
+    this.router.navigateByUrl(`/tabs/tab1/agregar/${listaId}`);   
   }
 
 
