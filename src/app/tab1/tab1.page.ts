@@ -47,9 +47,4 @@ export class Tab1Page {
 
   }
 
-  detalle(listaId:string | number){
-    this.router.navigateByUrl(`/tabs/tab1/agregar/${listaId}`);   
-  }
-
-
 }

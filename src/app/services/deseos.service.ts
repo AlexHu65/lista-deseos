@@ -12,6 +12,10 @@ export class DeseosService {
     this.cargarStorage();
   }
 
+  borrarLista(lista:Lista){
+    this.listas = this.listas.filter(listaData => lista.id !== listaData.id);
+    this.guardarStorage();
+  }
 
   crearLista(titulo:string){
     const nuevaLista = new Lista(titulo);
