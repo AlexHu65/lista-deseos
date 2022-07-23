@@ -42,4 +42,22 @@ export class AgregarPage  {
 
   }
 
+  cambioCheck(item:ListaItem){
+    const pendientes = this.lista.items.filter( item => !item.completado).length;
+    if(pendientes === 0){
+      this.lista.terminadaEn = new Date();
+      this.lista.terminada  = true;
+    }else{
+      this.lista.terminada  = false;
+      this.lista.terminadaEn =  null;
+    }
+    this.deseosService.guardarStorage();
+  }
+
+  borrar(i:number){
+    this.lista.items.splice(i,1);
+    this.deseosService.guardarStorage();
+
+  }
+
 }
